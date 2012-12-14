@@ -1,0 +1,26 @@
+{
+  "name": "resolved",
+  "version": "0.1.0",
+  "description": "a promises/a compliant `when`, but for objects instead of arrays",
+  "main": "resolved.js",
+  "scripts": {
+    "test": "node sample"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:jden/resolved.git"
+  },
+  "keywords": [
+    "when",
+    "promises",
+    "await",
+    "promises/a",
+    "promise",
+    "async"
+  ],
+  "author": "jden <jason@denizac.org>",
+  "license": "MIT",
+  "dependencies": {
+    "q": "~0.8.11"
+  }
+}
