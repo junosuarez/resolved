@@ -21,6 +21,6 @@
   "author": "jden <jason@denizac.org>",
   "license": "MIT",
   "dependencies": {
-    "q": "~0.8.11"
+    "q": "0.8.11"
   }
 }
