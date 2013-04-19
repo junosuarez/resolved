@@ -1,5 +1,5 @@
 var q = require('q');
-var resolved = require('./resolved');
+var resolved = require('./index');
 var assert = require('assert');
 
 var travelPlans = {

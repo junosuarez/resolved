@@ -1,58 +1,53 @@
-var q = require('q');
+var Q = require('q');
 
-function isPromise(x) {
-  // use our best heuristic
+function isThenable (x) {
   return typeof x === 'object' &&
-          x.then &&
-          typeof x.then === 'function';
+         typeof x.then === 'function';
 }
 
-module.exports = function resolved(obj) {
-  var deferred = q.defer();
+module.exports = function resolved (obj) {
+  return Q.promise(function (resolve, reject) {
+    console.log('resolving', obj)
+    var promises = []
+      , remaining = 0
+      , stack = [obj]
+      , next
+      , visited = [];
 
-  var promises = []
-    , remaining = 0
-    , stack = [obj]
-    , next
-    , visited = [];
+    // walk the object and stash all the promises
+    while (next = stack.pop()) {
+      if (visited.indexOf(next) >= 0) {
+        // break cycles
+        continue;
+      }
+      visited.push(next);
 
-  // walk the object and stash all the promises
-  while (next = stack.pop()) {
-    if (visited.indexOf(next) >= 0) {
-      // break cycles
-      continue;
-    }
-    visited.push(next);
-
-    if (isPromise(next)) {
-      promises.push(next);
-    } else {
-      for(var key in next) {
-        if (next.hasOwnProperty(key)) {
-          stack.push(next[key]);
+      if (isThenable(next)) {
+        promises.push(next);
+      } else {
+        for(var key in next) {
+          if (next.hasOwnProperty(key)) {
+            stack.push(next[key]);
+          }
         }
       }
     }
-  }
-
-  // attach resolve handlers
-  remaining = promises.length;
-  promises.forEach(function (promise) {
-    promise.then(function resolve(value) {
-      // update in place
-      promise = value;
-      remaining--;
-      if (remaining === 0) {
-        deferred.resolve(obj);
-      }
-    }, function reject(err) {
-      deferred.reject(err);
+    console.log('foo')
+    // attach resolve handlers
+    remaining = promises.length;
+    promises.forEach(function (promise) {
+      promise.then(function resolve(value) {
+        // update in place
+        promise = value;
+        remaining--;
+        if (remaining === 0) {
+          resolve(obj);
+        }
+      }, function reject(err) {
+        reject(err);
+      });
     });
-  });
 
-  // wait around a bit
+  })
 
-  // return promise
-
-  return deferred.promise;
 };
