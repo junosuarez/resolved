@@ -4,7 +4,7 @@
   "description": "a promises/a compliant `when`, but for objects instead of arrays",
   "main": "index.js",
   "scripts": {
-    "test": "node sample"
+    "test": "node node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
