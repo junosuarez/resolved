@@ -5,7 +5,7 @@ var Q = require('q')
 var resolved = require('../index')
 
 describe('resolved', function () {
-  
+
   it('example', function (done) {
     var travelPlans = {
       destination: Q('Indonesia'),
@@ -28,6 +28,16 @@ describe('resolved', function () {
 
   })
 
+  it('fulfills a plain value that does not have any promises in its object graph', function (done) {
+    var obj = {
+      a: 1,
+      b: '2',
+      c: 0x3
+    }
+    resolved(obj).then(function (x) {
+      x.should.deep.equal(obj);
+    }).then(done, done)
+  })
 
 
 })

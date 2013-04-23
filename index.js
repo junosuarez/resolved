@@ -55,6 +55,10 @@ module.exports = function resolved (obj) {
       resolve(obj)
     })
 
+    if (!counter.i) {
+      // no constituent promises
+      resolve(obj)
+    }
   })
 
 };
