@@ -2,7 +2,8 @@ var Q = require('q');
 var refcount = require('refcount')
 
 function isThenable (x) {
-  return typeof x === 'object' &&
+  return x !== null &&
+         typeof x === 'object' &&
          typeof x.then === 'function';
 }
 

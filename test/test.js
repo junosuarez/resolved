@@ -39,5 +39,16 @@ describe('resolved', function () {
     }).then(done, done)
   })
 
+  it('doesnt choke on null', function (done) {
+    var obj = {
+      foo: null
+    }
+
+    resolved(obj).then(function (x) {
+      x.should.deep.equal(obj);
+    }).then(done, done)
+
+  })
+
 
 })
