@@ -1,6 +1,6 @@
 var chai = require('chai')
 chai.should()
-var Q = require('q')
+var Promise = require('bluebird')
 
 var resolved = require('../index')
 
@@ -8,15 +8,15 @@ describe('resolved', function () {
 
   it('example', function (done) {
     var travelPlans = {
-      destination: Q('Indonesia'),
+      destination: Promise.resolve('Indonesia'),
       departure: new Date('June 4, 2013'),
       travelers: [
         'jden',
-        Q('a friend')
+        Promise.resolve('a friend')
       ],
       accommodations: {
         hotel: 'nah',
-        bungalow: Q('right on')
+        bungalow: Promise.resolve('right on')
       }
     }
 

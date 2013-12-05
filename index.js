@@ -1,4 +1,6 @@
-var Q = require('q');
+if (!('Promise' in global)) {
+  var Promise = require('bluebird')
+}
 var refcount = require('refcount')
 
 function isThenable (x) {
@@ -8,7 +10,7 @@ function isThenable (x) {
 }
 
 module.exports = function resolved (obj) {
-  return Q.promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
 
     var promises = []
       , counter
