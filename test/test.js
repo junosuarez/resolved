@@ -1,6 +1,6 @@
 var chai = require('chai')
 chai.should()
-var Promise = require('bluebird')
+require('polyfill-promise')
 
 var resolved = require('../index')
 

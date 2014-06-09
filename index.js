@@ -1,6 +1,4 @@
-if (!('Promise' in global)) {
-  var Promise = require('bluebird')
-}
+require('polyfill-promise')
 var refcount = require('refcount')
 
 function isThenable (x) {
