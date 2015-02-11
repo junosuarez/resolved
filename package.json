@@ -1,7 +1,7 @@
 {
   "name": "resolved",
   "version": "0.3.3",
-  "description": "a promises/a compliant `when`, but for objects instead of arrays",
+  "description": "Like Promise.all but for Objects",
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha"
