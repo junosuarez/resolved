@@ -21,7 +21,7 @@
   "author": "jden <jason@denizac.org>",
   "license": "MIT",
   "dependencies": {
-    "polyfill-promise": "^2.3.0",
+    "polyfill-promise": "^3.0.0",
     "refcount": "0.1.2"
   },
   "devDependencies": {
