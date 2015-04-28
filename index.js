@@ -1,4 +1,4 @@
-var Promise = require('polyfill-promise').noConflict()
+var Promise = require('polyfill-promise')
 var refcount = require('refcount')
 
 function isThenable (x) {
